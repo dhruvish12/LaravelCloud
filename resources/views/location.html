@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Get Latitude and Longitude from Address</title>
+</head>
+<body>
+  <input type="text" id="address" placeholder="Enter address" style="width: 300px;">
+  <button onclick="getCoordinates()">Get Coordinates</button>
+  <p id="location"></p>
+
+  <script>
+    function getCoordinates() {
+      const address = document.getElementById("address").value;
+      const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`;
+
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          if (data.length > 0) {
+            const lat = data[0].lat;
+            const lon = data[0].lon;
+            document.getElementById("location").innerHTML = `Latitude: ${lat}<br>Longitude: ${lon}`;
+          } else {
+            document.getElementById("location").innerHTML = "Address not found.";
+          }
+        })
+        .catch(error => {
+          document.getElementById("location").innerHTML = "Error: " + error;
+        });
+    }
+  </script>
+</body>
+</html>
