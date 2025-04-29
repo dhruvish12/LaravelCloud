@@ -20,3 +20,4 @@ Route::middleware([
 
 
 Route::get('/get-location', [WhatsoupController::class, 'getLatLngFromAddress']);
+Route::get('/testing', [WhatsoupController::class, 'testingDemo']);

@@ -134,5 +134,10 @@ class WhatsoupController extends Controller
         }
     }
 
+    public function testingDemo()
+    {
+        dd('Testing demo');
+    }
+
 
 }
